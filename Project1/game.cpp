@@ -9,7 +9,7 @@ Game::Game()
 
 void Game::run()
 {
-	while (playAgain)
+	while (playAgain())
 	{
 		pickAttack();
 		updateEnemy();
