@@ -32,12 +32,13 @@ struct Card
     Ranks rank;
 };
 
-struct Deck 
+struct Deck
 {
     std::vector<Card> enemyDeck;
     std::vector<Card> playerDeck;
     std::vector<Card> discard;
     std::vector<Card> combat;
+
     void makeDecks()
     {
         for (int suit = (int)Suits::CLUB; suit <= (int)Suits::SPADE; suit++)
@@ -58,12 +59,23 @@ struct Deck
             }
         }
     }
+
+    void printDeck(std::vector<Card> deck)
+    {
+        for (int i = 0; i < deck.size(); i++)
+        {
+            std::cout << deck[i].rank << " of " << deck[i].suit << '\n';
+        }
+    }
 };
 
 int main()
 {
     Deck deck;
     deck.makeDecks();
+    deck.printDeck(deck.playerDeck);
+    std::cout << '\n';
+    deck.printDeck(deck.enemyDeck);
 }
 
 
