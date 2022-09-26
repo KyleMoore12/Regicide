@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 enum Suits
 {
@@ -33,9 +34,11 @@ struct Card
 
 struct Deck 
 {
-    Card deck[52];
-
-    void makeDeck()
+    std::vector<Card> enemyDeck;
+    std::vector<Card> playerDeck;
+    std::vector<Card> discard;
+    std::vector<Card> combat;
+    void makeDecks()
     {
         for (int suit = (int)Suits::CLUB; suit <= (int)Suits::SPADE; suit++)
         {
@@ -44,20 +47,23 @@ struct Deck
                 Card c;
                 c.rank = (Ranks)rank;
                 c.suit = (Suits)suit;
-                std::cout << c.rank << " of " << c.suit << '\n';
+                if (rank <= 10)
+                {
+                    playerDeck.push_back(c);
+                }
+                else
+                {
+                    enemyDeck.push_back(c);
+                }
             }
-
-            std::cout << '\n';
         }
     }
-        
-        
 };
 
 int main()
 {
     Deck deck;
-    deck.makeDeck();
+    deck.makeDecks();
 }
 
 
