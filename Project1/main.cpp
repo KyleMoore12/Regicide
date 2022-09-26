@@ -36,6 +36,7 @@ struct Deck
 {
     std::vector<Card> enemyDeck;
     std::vector<Card> playerDeck;
+    std::vector<Card> hand;
     std::vector<Card> discard;
     std::vector<Card> combat;
 
@@ -77,5 +78,3 @@ int main()
     std::cout << '\n';
     deck.printDeck(deck.enemyDeck);
 }
-
-
